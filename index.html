@@ -1,0 +1,293 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HerbalLife Store | Natural Herbal Products</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5fff5;
+    line-height:1.6;
+}
+
+header{
+    background:#2e7d32;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+header h1{
+    font-size:2.5rem;
+}
+
+nav{
+    background:#1b5e20;
+    text-align:center;
+    padding:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:15px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#c8e6c9;
+}
+
+.hero{
+    background:url('https://images.unsplash.com/photo-1514996937319-344454492b37?w=1600') center/cover;
+    height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+}
+
+.hero-content{
+    background:rgba(0,0,0,0.5);
+    padding:40px;
+    border-radius:10px;
+}
+
+.hero h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#4caf50;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+.btn:hover{
+    background:#2e7d32;
+}
+
+section{
+    padding:60px 10%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    color:#2e7d32;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.feature-box{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.product-card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.product-card h3,
+.product-card p{
+    padding:15px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+.gallery-button{
+    text-align:center;
+    margin-top:30px;
+}
+
+.cta{
+    background:#2e7d32;
+    color:white;
+    text-align:center;
+    border-radius:10px;
+}
+
+footer{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.whatsapp-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:65px;
+    z-index:999;
+}
+
+.whatsapp-btn img{
+    width:100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>HerbalLife Store</h1>
+    <p>Natural Wellness Through Herbal Solutions</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="product.html">Products</a>
+    <a href="gallery.html">Gallery</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Pure Herbal Products</h2>
+        <p>Experience the power of nature with premium herbal wellness products.</p>
+        <a href="product.html" class="btn">Explore Products</a>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Why Choose Us?</h2>
+
+    <div class="features">
+
+        <div class="feature-box">
+            <h3>100% Natural</h3>
+            <p>Prepared using carefully selected herbal ingredients.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>Trusted Quality</h3>
+            <p>Quality-tested products designed for daily wellness.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>Affordable Pricing</h3>
+            <p>Premium herbal solutions at customer-friendly prices.</p>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Featured Products</h2>
+
+    <div class="products">
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1000">
+            <h3>Herbal Tea</h3>
+            <p>Refreshing herbal blend for everyday wellness.</p>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1000">
+            <h3>Aloe Vera Gel</h3>
+            <p>Natural skincare and hydration support.</p>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=1000">
+            <h3>Herbal Capsules</h3>
+            <p>Plant-based supplements for daily vitality.</p>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Gallery Preview</h2>
+
+    <div class="gallery">
+
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1000">
+        <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=1000">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=1000">
+
+    </div>
+
+    <div class="gallery-button">
+        <a href="gallery.html" class="btn">View Full Gallery</a>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready to Improve Your Wellness Naturally?</h2>
+    <p>Browse our herbal collection and contact us for more information.</p>
+    <a href="product.html" class="btn">Shop Now</a>
+</section>
+
+<footer>
+    <p>&copy; 2026 HerbalLife Store. All Rights Reserved.</p>
+</footer>
+
+<a href="https://wa.me/919799902365?text=Hello%20I%20am%20interested%20in%20your%20herbal%20products"
+class="whatsapp-btn"
+target="_blank">
+
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+alt="WhatsApp">
+
+</a>
+
+</body>
+</html>
+```
