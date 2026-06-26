@@ -1,0 +1,404 @@
+/* ==========================================
+   GOOGLE FONT
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#ffffff;
+}
+
+/* ==========================================
+        COMMON CONTAINER
+========================================== */
+
+.container{
+
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+
+}
+
+/* ==========================================
+            TOP BAR
+========================================== */
+
+.top-bar{
+
+    background:#002B5B;
+    color:white;
+
+    font-size:14px;
+
+    padding:10px 0;
+
+}
+
+.top-bar .container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.top-left{
+
+    display:flex;
+
+    gap:25px;
+
+}
+
+.top-left span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.top-right{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.top-right a{
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+.top-right a:hover{
+
+    color:#FFC107;
+
+}
+
+/* ==========================================
+            NAVBAR
+========================================== */
+
+.navbar{
+
+    background:white;
+
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+}
+
+.navbar .container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+/* ==========================================
+                LOGO
+========================================== */
+
+.logo a{
+
+    display:flex;
+
+    align-items:center;
+
+    text-decoration:none;
+
+}
+
+.logo img{
+
+    width:65px;
+
+    margin-right:12px;
+
+}
+
+.logo-text h2{
+
+    color:#0066CC;
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.logo-text p{
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+/* ==========================================
+            NAVIGATION LINKS
+========================================== */
+
+.nav-links{
+
+    list-style:none;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.nav-links li{
+
+    position:relative;
+
+}
+
+.nav-links li a{
+
+    color:#222;
+
+    text-decoration:none;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.nav-links li a:hover{
+
+    color:#0066CC;
+
+}
+
+.nav-links li i{
+
+    font-size:12px;
+
+    margin-left:5px;
+
+}
+  /* ==========================================
+        DROPDOWN MENU
+========================================== */
+
+.dropdown-menu{
+
+    position:absolute;
+
+    left:0;
+
+    top:40px;
+
+    width:220px;
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s;
+
+    list-style:none;
+
+    overflow:hidden;
+
+}
+
+.dropdown-menu li{
+
+    border-bottom:1px solid #eee;
+
+}
+
+.dropdown-menu li:last-child{
+
+    border-bottom:none;
+
+}
+
+.dropdown-menu li a{
+
+    display:block;
+
+    padding:14px 18px;
+
+}
+
+.dropdown-menu li a:hover{
+
+    background:#0066CC;
+
+    color:white;
+
+}
+
+.dropdown:hover .dropdown-menu{
+
+    opacity:1;
+
+    visibility:visible;
+
+    top:55px;
+
+}
+  /* ==========================================
+            NAV BUTTONS
+========================================== */
+
+.nav-buttons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.search-btn{
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:#F4F4F4;
+
+    transition:.3s;
+
+}
+
+.search-btn:hover{
+
+    background:#0066CC;
+
+    color:white;
+
+}
+
+.whatsapp-btn{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+}
+
+.book-btn{
+
+    background:#0066CC;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:13px 28px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.book-btn:hover{
+
+    background:#FFC107;
+
+    color:black;
+
+}
+  /* ==========================================
+        MOBILE MENU
+========================================== */
+
+.menu-toggle{
+
+    display:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+}
+
+/* ==========================================
+        STICKY NAVBAR EFFECT
+========================================== */
+
+.navbar.sticky{
+
+    animation:slideDown .5s;
+
+}
+
+@keyframes slideDown{
+
+    from{
+
+        transform:translateY(-100%);
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+    }
+
+}
+    height:90px;
+
+}
