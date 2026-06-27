@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =====================================================
+         AMAZON STYLE E-COMMERCE WEBSITE
+         File : index.html
+         Owner : Yatharth Sharma
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yatharth Store | Online Shopping for Electronics, Car Accessories & Home Essentials</title>
+
+    <meta name="description" content="Shop premium electronics, car accessories, home essentials and more at Yatharth Store. Enjoy amazing discounts, fast delivery and excellent customer service.">
+
+    <meta name="keywords" content="electronics, car accessories, home accessories, online shopping, amazon style website">
+
+    <meta name="author" content="Yatharth Sharma">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f3f3f3;
+            color:#222;
+            line-height:1.6;
+        }
+
+        a{
+            text-decoration:none;
+            color:white;
+        }
+
+        img{
+            max-width:100%;
+            display:block;
+        }
+
+        /* ================= HEADER ================= */
+
+        header{
+            background:#131921;
+            color:white;
+            position:sticky;
+            top:0;
+            z-index:1000;
+        }
+
+        .top-bar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px 40px;
+            flex-wrap:wrap;
+        }
+
+        .logo h1{
+            color:#ff9900;
+            font-size:34px;
+        }
+
+        .logo p{
+            font-size:14px;
+            color:#dddddd;
+        }
+
+        .search-box{
+            display:flex;
+            width:45%;
+            min-width:280px;
+        }
+
+        .search-box input{
+            flex:1;
+            padding:12px;
+            border:none;
+            outline:none;
+            font-size:16px;
+        }
+
+        .search-box button{
+            width:70px;
+            border:none;
+            background:#ff9900;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        .search-box button:hover{
+            background:#e67e00;
+        }
+
+        .contact-mini{
+            text-align:right;
+            font-size:14px;
+        }
+
+        nav{
+            background:#232f3e;
+        }
+
+        nav ul{
+            display:flex;
+            justify-content:center;
+            list-style:none;
+            flex-wrap:wrap;
+        }
+
+        nav ul li{
+            margin:15px 25px;
+        }
+
+        nav ul li a{
+            color:white;
+            font-weight:bold;
+            transition:.3s;
+        }
+
+        nav ul li a:hover{
+            color:#ff9900;
+        }
+
+        /* ================= HERO SECTION ================= */
+
+        .hero{
+
+            width:95%;
+            margin:30px auto;
+            background:white;
+            border-radius:12px;
+            overflow:hidden;
+            box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+        }
+
+        .hero img{
+
+            width:100%;
+            height:auto;
+
+        }
+
+        .hero-text{
+
+            padding:40px;
+            text-align:center;
+
+        }
+
+        .hero-text h2{
+
+            font-size:42px;
+            color:#131921;
+            margin-bottom:20px;
+
+        }
+
+        .hero-text p{
+
+            font-size:20px;
+            color:#555;
+            max-width:900px;
+            margin:auto;
+
+        }
+
+        .shop-button{
+
+            display:inline-block;
+            margin-top:30px;
+            background:#ff9900;
+            color:white;
+            padding:15px 40px;
+            border-radius:6px;
+            font-size:18px;
+            transition:.3s;
+
+        }
+
+        .shop-button:hover{
+
+            background:#e67e00;
+
+        }
+
+        /* ================= INTRO ================= */
+
+        .intro{
+
+            width:90%;
+            margin:40px auto;
+            background:white;
+            padding:40px;
+            border-radius:10px;
+            box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+        }
+
+        .intro h2{
+
+            text-align:center;
+            margin-bottom:20px;
+            color:#131921;
+
+        }
+
+        .intro p{
+
+            text-align:justify;
+            margin-bottom:20px;
+            font-size:17px;
+
+        }
+
+        /* ================= CATEGORY SECTION ================= */
+
+        .category-heading{
+
+            text-align:center;
+            margin-top:50px;
+            color:#131921;
+            font-size:36px;
+
+        }
+
+        .categories{
+
+            width:90%;
+            margin:40px auto;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+
+        }
+
+        .card{
+
+            background:white;
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0 5px 20px rgba(0,0,0,.12);
+            transition:.4s;
+
+        }
+
+        .card:hover{
+
+            transform:translateY(-8px);
+
+        }
+
+        .card-body{
+
+            padding:25px;
+
+        }
+
+        .card h3{
+
+            color:#131921;
+            margin-bottom:15px;
+
+        }
+
+        .card p{
+
+            margin-bottom:20px;
+            color:#555;
+
+        }
+
+        .btn{
+
+            display:inline-block;
+            background:#131921;
+            padding:12px 25px;
+            border-radius:5px;
+            color:white;
+
+        }
+
+        .btn:hover{
+
+            background:#ff9900;
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+<div class="top-bar">
+
+<div class="logo">
+
+<h1>Yatharth Store</h1>
+
+<p>Everything You Need In One Place</p>
+
+</div>
+
+<div class="search-box">
+
+<input type="text" placeholder="Search products...">
+
+<button>🔍</button>
+
+</div>
+
+<div class="contact-mini">
+
+<p><strong>Customer Care</strong></p>
+
+<p>+91 9799902365</p>
+
+</div>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="electronic.html">Electronics</a></li>
+
+<li><a href="car.html">Car Accessories</a></li>
+
+<li><a href="home.html">Home Essentials</a></li>
+
+<li><a href="customer.html">Customer Service</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<!-- ================= HERO IMAGE ================= -->
+
+<section class="hero">
+
+<img src="amazon.png" alt="Amazon Style Shopping Banner">
+
+<div class="hero-text">
+
+<h2>Welcome to Yatharth Store</h2>
+
+<p>
+
+Discover an exciting online shopping experience with thousands of premium
+products at unbeatable prices. From modern electronic gadgets to stylish
+car accessories and elegant home essentials, we bring quality products,
+secure shopping, exciting offers, and exceptional customer service
+together in one place.
+
+</p>
+
+<a href="#categories" class="shop-button">Start Shopping</a>
+
+</div>
+
+</section>
+
+<!-- ================= INTRODUCTION ================= -->
+
+<section class="intro">
+
+<h2>Shop Smarter. Save Bigger.</h2>
+
+<p>
+
+Welcome to Yatharth Store, your trusted online marketplace inspired by
+the world's leading e-commerce platforms. We carefully select quality
+products that combine affordability, durability, and premium design.
+Whether you're upgrading your home, purchasing the latest electronic
+devices, or enhancing your vehicle with useful accessories, our platform
+offers a seamless shopping experience for every customer.
+
+</p>
+
+<p>
+
+Our goal is to provide secure shopping, attractive discounts, reliable
+customer support, and exciting seasonal offers. Browse our carefully
+organized categories and discover products that perfectly suit your
+lifestyle.
+
+</p>
+
+</section>
+
+<h2 class="category-heading" id="categories">
+Shop By Category
+</h2>
+
+<section class="categories">
+
+<!-- Electronics -->
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>Electronic Devices</h3>
+
+<p>
+
+Explore smartphones, laptops, smart watches,
+wireless earbuds, gaming accessories,
+Bluetooth speakers, cameras and many more
+latest gadgets with exclusive bumper offers.
+
+</p>
+
+<a href="electronic.html" class="btn">
+Explore Electronics
+</a>
+
+</div>
+
+</div>
+
+<!-- Car Accessories -->
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>Car Accessories</h3>
+
+<p>
+
+Upgrade your driving experience with premium
+car care products, organizers, lighting,
+cleaning kits, seat covers, gadgets,
+air compressors and much more.
+
+</p>
+
+<a href="car.html" class="btn">
+Explore Car Accessories
+</a>
+
+</div>
+
+</div>
+
+<!-- Home Essentials -->
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>Home Accessories</h3>
+
+<p>
+
+Discover stylish home décor,
+kitchen essentials,
+storage solutions,
+lighting,
+decorative items and premium accessories
+at unbeatable prices.
+
+</p>
+
+<a href="home.html" class="btn">
+Explore Home Essentials
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========= END OF PART 1 ========= -->
+<!-- Continue with index.html Part 2 -->
+  <!-- ========================================================= -->
+<!--               INDEX.HTML - PART 2                         -->
+<!--      Paste this code immediately after Part 1             -->
+<!-- ========================================================= -->
+
+<!-- ================= TODAY'S DEALS ================= -->
+
+<section style="width:90%;margin:50px auto;">
+
+    <h2 style="text-align:center;color:#131921;font-size:36px;margin-bottom:40px;">
+        🔥 Today's Mega Deals
+    </h2>
+
+    <div style="display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+                gap:25px;">
+
+        <div class="card">
+            <div class="card-body">
+                <h3>📱 Smartphones</h3>
+                <h4 style="color:red;">Up to 45% OFF</h4>
+
+                <p>
+                    Premium Android and flagship smartphones with
+                    high-resolution cameras, AI features, fast charging,
+                    AMOLED displays and extended warranty.
+                </p>
+
+                <a href="electronic.html" class="btn">Shop Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>💻 Laptops</h3>
+                <h4 style="color:red;">Save ₹20,000</h4>
+
+                <p>
+                    Powerful laptops for students,
+                    professionals and gamers with SSD storage,
+                    latest processors and premium performance.
+                </p>
+
+                <a href="electronic.html" class="btn">View Offer</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>🚗 Car Care</h3>
+                <h4 style="color:red;">Flat 60% OFF</h4>
+
+                <p>
+                    Premium cleaning kits,
+                    vacuum cleaners,
+                    organizers,
+                    polish,
+                    tyre inflators and essential accessories.
+                </p>
+
+                <a href="car.html" class="btn">Grab Deal</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>🏠 Home Décor</h3>
+                <h4 style="color:red;">Buy 2 Get 1 Free</h4>
+
+                <p>
+                    Beautiful decorative products,
+                    storage organizers,
+                    lighting,
+                    cushions,
+                    furniture accessories and more.
+                </p>
+
+                <a href="home.html" class="btn">Explore</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= WHY SHOP WITH US ================= -->
+
+<section style="background:white;padding:70px 0;">
+
+    <h2 style="text-align:center;
+               color:#131921;
+               font-size:38px;
+               margin-bottom:50px;">
+
+        Why Millions Choose Yatharth Store
+
+    </h2>
+
+    <div style="width:90%;
+                margin:auto;
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+                gap:30px;">
+
+        <div class="card">
+            <div class="card-body">
+                <h3>🚚 Fast Delivery</h3>
+
+                <p>
+
+                    Receive your orders quickly with our trusted delivery
+                    partners and safe packaging across India.
+
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+
+                <h3>💳 Secure Payments</h3>
+
+                <p>
+
+                    Pay securely using UPI,
+                    Credit Card,
+                    Debit Card,
+                    Net Banking and Cash on Delivery.
+
+                </p>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+
+                <h3>🔄 Easy Returns</h3>
+
+                <p>
+
+                    Enjoy hassle-free replacement
+                    and simple return policies on eligible products.
+
+                </p>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+
+                <h3>⭐ Premium Quality</h3>
+
+                <p>
+
+                    Every product is selected carefully to ensure quality,
+                    reliability and complete customer satisfaction.
+
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURED COLLECTIONS ================= -->
+
+<section style="width:90%;margin:60px auto;">
+
+<h2 style="text-align:center;
+           color:#131921;
+           font-size:36px;
+           margin-bottom:40px;">
+
+Featured Collections
+
+</h2>
+
+<div style="display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;">
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>🎧 Electronics Collection</h3>
+
+<p>
+
+Discover premium headphones,
+Bluetooth speakers,
+gaming accessories,
+power banks,
+tablets,
+laptops,
+wireless chargers,
+smart watches and many more innovative gadgets.
+
+</p>
+
+<a href="electronic.html" class="btn">
+Browse Collection
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>🚘 Car Accessories Collection</h3>
+
+<p>
+
+Upgrade your vehicle with
+vacuum cleaners,
+seat covers,
+LED lights,
+air compressors,
+dash cameras,
+car perfumes,
+phone holders and detailing products.
+
+</p>
+
+<a href="car.html" class="btn">
+Browse Collection
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>🏡 Home Accessories Collection</h3>
+
+<p>
+
+Beautify your home with
+decorative lamps,
+wall décor,
+vases,
+storage organizers,
+kitchen essentials,
+premium furnishings and smart home accessories.
+
+</p>
+
+<a href="home.html" class="btn">
+Browse Collection
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =============== END OF PART 2 ================= -->
+<!-- Continue with index.html Part 3 -->
+  <!-- ========================================================= -->
+<!--                 INDEX.HTML - PART 3                        -->
+<!--        Paste this code immediately after Part 2           -->
+<!-- ========================================================= -->
+
+<!-- =================== CUSTOMER BENEFITS =================== -->
+
+<section style="background:#ffffff;padding:70px 0;">
+
+    <div style="width:90%;margin:auto;">
+
+        <h2 style="text-align:center;
+                   color:#131921;
+                   font-size:38px;
+                   margin-bottom:50px;">
+
+            Exclusive Shopping Benefits
+
+        </h2>
+
+        <div style="display:grid;
+                    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+                    gap:30px;">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h3>🎁 Daily Flash Deals</h3>
+
+                    <p>
+                        Save big every day with limited-time flash sales on
+                        electronics, home essentials, car accessories and
+                        lifestyle products.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h3>🚚 Free Shipping</h3>
+
+                    <p>
+                        Enjoy free shipping on selected products and special
+                        festive offers across a wide range of categories.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h3>🔒 Safe Shopping</h3>
+
+                    <p>
+                        Your privacy and payment information are protected with
+                        secure checkout and trusted payment gateways.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h3>💰 Best Price Guarantee</h3>
+
+                    <p>
+                        We work hard to offer competitive prices on quality
+                        products without compromising customer satisfaction.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =================== SPECIAL OFFERS =================== -->
+
+<section style="width:90%;margin:70px auto;">
+
+    <h2 style="text-align:center;
+               color:#131921;
+               font-size:38px;
+               margin-bottom:40px;">
+
+        🎉 Bumper Offers
+
+    </h2>
+
+    <table style="width:100%;
+                  border-collapse:collapse;
+                  background:white;
+                  box-shadow:0 8px 20px rgba(0,0,0,.10);">
+
+        <tr style="background:#131921;color:white;">
+
+            <th style="padding:18px;">Category</th>
+            <th>Offer</th>
+            <th>Discount</th>
+            <th>Shop</th>
+
+        </tr>
+
+        <tr>
+
+            <td style="padding:18px;">Electronic Devices</td>
+            <td>Festival Mega Sale</td>
+            <td style="color:red;font-weight:bold;">Up to 70% OFF</td>
+            <td>
+                <a href="electronic.html" class="btn">View</a>
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td style="padding:18px;">Car Accessories</td>
+            <td>Premium Combo Deals</td>
+            <td style="color:red;font-weight:bold;">Flat 60% OFF</td>
+            <td>
+                <a href="car.html" class="btn">View</a>
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td style="padding:18px;">Home Accessories</td>
+            <td>Decor Carnival</td>
+            <td style="color:red;font-weight:bold;">Buy 2 Get 1 Free</td>
+            <td>
+                <a href="home.html" class="btn">View</a>
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+<!-- =================== NEWSLETTER =================== -->
+
+<section style="background:#232f3e;
+                color:white;
+                padding:70px 20px;
+                text-align:center;">
+
+    <h2 style="font-size:38px;margin-bottom:20px;">
+
+        Stay Updated
+
+    </h2>
+
+    <p style="max-width:800px;
+              margin:auto;
+              font-size:18px;
+              margin-bottom:35px;">
+
+        Subscribe to receive updates about exclusive discounts,
+        new arrivals, festive sales, limited-time offers,
+        shopping tips and exciting product launches.
+
+    </p>
+
+    <form>
+
+        <input
+            type="email"
+            placeholder="Enter your Email Address"
+            style="width:320px;
+                   max-width:90%;
+                   padding:15px;
+                   border:none;
+                   border-radius:5px;
+                   font-size:16px;">
+
+        <button
+            style="padding:15px 30px;
+                   background:#ff9900;
+                   color:white;
+                   border:none;
+                   border-radius:5px;
+                   cursor:pointer;
+                   font-size:16px;
+                   margin-left:10px;">
+
+            Subscribe
+
+        </button>
+
+    </form>
+
+</section>
+
+<!-- =================== CUSTOMER SUPPORT =================== -->
+
+<section style="width:90%;
+                margin:70px auto;
+                background:white;
+                padding:50px;
+                border-radius:10px;
+                box-shadow:0 8px 20px rgba(0,0,0,.08);">
+
+    <h2 style="text-align:center;
+               color:#131921;
+               margin-bottom:30px;">
+
+        Need Help?
+
+    </h2>
+
+    <p style="text-align:center;
+              font-size:18px;
+              max-width:900px;
+              margin:auto;">
+
+        Our customer support team is always ready to assist you with
+        product information, order tracking, returns, exchanges,
+        payment queries and delivery support. We are committed to
+        providing a smooth and enjoyable shopping experience.
+
+    </p>
+
+    <div style="text-align:center;margin-top:35px;">
+
+        <a href="customer.html" class="btn">
+            Contact Customer Support
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =================== END OF PART 3 =================== -->
+<!-- Continue with index.html Part 4 -->
+  <!-- ========================================================= -->
+<!--                 INDEX.HTML - PART 4                        -->
+<!--          Paste this code immediately after Part 3          -->
+<!-- ========================================================= -->
+
+<!-- =================== ABOUT STORE =================== -->
+
+<section style="background:#f8f8f8;padding:70px 20px;">
+
+    <div style="width:90%;margin:auto;">
+
+        <h2 style="text-align:center;
+                   color:#131921;
+                   font-size:38px;
+                   margin-bottom:30px;">
+
+            About Yatharth Store
+
+        </h2>
+
+        <p style="font-size:18px;
+                  text-align:justify;
+                  line-height:1.9;
+                  margin-bottom:20px;">
+
+            Yatharth Store is a modern online shopping platform inspired by
+            the world's leading e-commerce websites. Our objective is to
+            provide customers with a convenient, secure and affordable
+            shopping experience. We carefully select quality products across
+            multiple categories including electronics, car accessories and
+            home essentials.
+
+        </p>
+
+        <p style="font-size:18px;
+                  text-align:justify;
+                  line-height:1.9;">
+
+            We believe that shopping should be simple, enjoyable and
+            trustworthy. Whether you are searching for the latest gadgets,
+            premium car accessories or stylish home décor, Yatharth Store
+            offers attractive prices, exciting discounts and dependable
+            customer support.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =================== QUICK LINKS =================== -->
+
+<section style="padding:60px 20px;background:white;">
+
+    <h2 style="text-align:center;
+               color:#131921;
+               margin-bottom:40px;
+               font-size:36px;">
+
+        Quick Navigation
+
+    </h2>
+
+    <div style="display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+                gap:25px;
+                width:90%;
+                margin:auto;">
+
+        <div class="card">
+            <div class="card-body">
+                <h3>🏠 Home</h3>
+                <p>Return to the homepage.</p>
+                <a href="index.html" class="btn">Open</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>💻 Electronics</h3>
+                <p>Latest gadgets and digital devices.</p>
+                <a href="electronic.html" class="btn">Open</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>🚗 Car Accessories</h3>
+                <p>Premium accessories for your vehicle.</p>
+                <a href="car.html" class="btn">Open</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>🏡 Home Essentials</h3>
+                <p>Modern products for your home.</p>
+                <a href="home.html" class="btn">Open</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3>📞 Customer Service</h3>
+                <p>Need help? Contact our support team.</p>
+                <a href="customer.html" class="btn">Open</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =================== FOOTER =================== -->
+
+<footer style="background:#131921;
+               color:white;
+               padding:50px 20px 20px;">
+
+    <div style="display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+                gap:30px;
+                width:90%;
+                margin:auto;">
+
+        <!-- Company -->
+
+        <div>
+
+            <h3 style="margin-bottom:20px;color:#ff9900;">
+                Yatharth Store
+            </h3>
+
+            <p>
+
+                Your trusted online shopping destination for quality
+                electronics, premium car accessories and beautiful home
+                essentials at affordable prices.
+
+            </p>
+
+        </div>
+
+        <!-- Categories -->
+
+        <div>
+
+            <h3 style="margin-bottom:20px;color:#ff9900;">
+                Categories
+            </h3>
+
+            <p><a href="electronic.html">Electronics</a></p>
+            <br>
+
+            <p><a href="car.html">Car Accessories</a></p>
+            <br>
+
+            <p><a href="home.html">Home Accessories</a></p>
+
+        </div>
+
+        <!-- Customer Service -->
+
+        <div>
+
+            <h3 style="margin-bottom:20px;color:#ff9900;">
+                Customer Service
+            </h3>
+
+            <p><a href="customer.html">Contact Us</a></p>
+            <br>
+
+            <p><a href="customer.html">Returns & Refunds</a></p>
+            <br>
+
+            <p><a href="customer.html">Shipping Information</a></p>
+
+        </div>
+
+        <!-- Contact -->
+
+        <div>
+
+            <h3 style="margin-bottom:20px;color:#ff9900;">
+                Contact Details
+            </h3>
+
+            <p>📞 +91 9799902365</p>
+            <br>
+
+            <p>📧 yatharth.01sharma@gmail.com</p>
+            <br>
+
+            <p>💬 WhatsApp Available</p>
+
+        </div>
+
+    </div>
+
+    <hr style="margin:40px auto;
+               width:90%;
+               border:1px solid #444;">
+
+    <div style="text-align:center;">
+
+        <p>
+
+            © 2026 Yatharth Store. All Rights Reserved.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Designed & Developed by
+            <strong>Yatharth Sharma</strong>
+
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
+
+<!-- =================== END OF INDEX.HTML =================== -->
