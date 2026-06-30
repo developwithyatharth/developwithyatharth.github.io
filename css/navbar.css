@@ -1,0 +1,466 @@
+/* ==========================================================
+                    TOP ANNOUNCEMENT BAR
+========================================================== */
+
+.top-bar{
+
+    background:#0F172A;
+
+    color:#ffffff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:8px 5%;
+
+    font-size:.9rem;
+
+    font-weight:500;
+
+}
+
+.top-bar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.top-bar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+.top-bar-right a{
+
+    color:#ffffff;
+
+    transition:var(--transition);
+
+}
+
+.top-bar-right a:hover{
+
+    color:var(--accent);
+
+}
+
+
+/* ==========================================================
+                        HEADER
+========================================================== */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    background:#ffffff;
+
+    box-shadow:var(--shadow-small);
+
+}
+
+
+/* ==========================================================
+                    MAIN NAVIGATION
+========================================================== */
+
+.navbar{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:15px 0;
+
+}
+
+
+/* ==========================================================
+                        LOGO
+========================================================== */
+
+.logo img{
+
+    width:170px;
+
+    object-fit:contain;
+
+}
+
+
+/* ==========================================================
+                    DELIVERY LOCATION
+========================================================== */
+
+.delivery-location{
+
+    display:flex;
+
+    flex-direction:column;
+
+    cursor:pointer;
+
+}
+
+.delivery-location small{
+
+    color:var(--text-light);
+
+    font-size:.75rem;
+
+}
+
+.delivery-location span{
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+}
+
+
+/* ==========================================================
+                    SEARCH CONTAINER
+========================================================== */
+
+.search-container{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#ffffff;
+
+    border:2px solid var(--primary);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    height:52px;
+
+}
+
+.search-container select{
+
+    border:none;
+
+    background:#F1F5F9;
+
+    padding:0 15px;
+
+    height:100%;
+
+    cursor:pointer;
+
+}
+
+.search-container input{
+
+    flex:1;
+
+    border:none;
+
+    padding:0 20px;
+
+    font-size:1rem;
+
+}
+
+.search-container button{
+
+    width:65px;
+
+    height:100%;
+
+    background:var(--primary);
+
+    color:#ffffff;
+
+    font-size:1.1rem;
+
+}
+
+.search-container button:hover{
+
+    background:var(--secondary);
+
+}
+/* ==========================================================
+                    RIGHT NAVIGATION
+========================================================== */
+
+.nav-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+}
+
+.nav-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.nav-item:hover{
+
+    color:var(--primary);
+
+}
+
+.nav-item small{
+
+    font-size:.72rem;
+
+    color:var(--text-light);
+
+}
+
+.nav-item strong{
+
+    font-size:.90rem;
+
+    font-weight:700;
+
+}
+
+.nav-item i{
+
+    font-size:1.2rem;
+
+    margin-bottom:4px;
+
+}
+
+
+/* ==========================================================
+                        CART
+========================================================== */
+
+.cart{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+}
+
+.cart i{
+
+    font-size:1.6rem;
+
+    color:var(--primary);
+
+}
+
+.cart-count{
+
+    position:absolute;
+
+    top:-8px;
+
+    left:18px;
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    background:#EF4444;
+
+    color:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================================
+                SECONDARY NAVIGATION
+========================================================== */
+
+.secondary-nav{
+
+    background:var(--primary);
+
+}
+
+.secondary-nav ul{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+    padding:14px 0;
+
+}
+
+.secondary-nav li{
+
+    list-style:none;
+
+}
+
+.secondary-nav a{
+
+    color:#ffffff;
+
+    font-size:.93rem;
+
+    font-weight:500;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    transition:var(--transition);
+
+}
+
+.secondary-nav a:hover{
+
+    color:#FACC15;
+
+}
+
+
+/* ==========================================================
+                HOVER EFFECTS
+========================================================== */
+
+.logo img{
+
+    transition:var(--transition);
+
+}
+
+.logo:hover img{
+
+    transform:scale(1.04);
+
+}
+
+.search-container{
+
+    transition:var(--transition);
+
+}
+
+.search-container:focus-within{
+
+    box-shadow:0 0 0 5px rgba(30,58,138,.15);
+
+}
+
+
+/* ==========================================================
+                ACTIVE LINK
+========================================================== */
+
+.secondary-nav a.active{
+
+    color:#FACC15;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================================
+                STICKY ANIMATION
+========================================================== */
+
+header{
+
+    animation:headerFade .35s ease;
+
+}
+
+@keyframes headerFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
