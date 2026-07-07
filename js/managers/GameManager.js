@@ -132,17 +132,53 @@ export default class GameManager {
         this.player.create();
 
     }
+     {
+
+    if (!this.player) return;
+
+    const targetPosition = new THREE.Vector3(
+
+        this.player.mesh.position.x,
+
+        this.player.mesh.position.y + 4,
+
+        this.player.mesh.position.z - 8
+
+    );
+
+    this.camera.position.lerp(
+
+        targetPosition,
+
+        0.08
+
+    );
+
+    this.camera.lookAt(
+
+        this.player.mesh.position.x,
+
+        this.player.mesh.position.y + 1,
+
+        this.player.mesh.position.z + 10
+
+    );
+
+}
 
     update() {
 
-        const deltaTime = this.clock.getDelta();
+    const deltaTime = this.clock.getDelta();
 
-        // Future updates will be added here.
-        // Example:
-        // this.player.update(deltaTime);
+    if (this.player) {
+
+        this.player.update(deltaTime);
 
     }
 
+    this.updateCamera();
+
+}
     render() {
 
         this.renderer.render(
