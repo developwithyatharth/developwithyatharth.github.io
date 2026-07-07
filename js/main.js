@@ -1,43 +1,11 @@
-import Engine from "./core/Engine.js";
+import GameManager from "./managers/GameManager.js";
 
-import Game from "./core/Game.js";
+window.addEventListener("DOMContentLoaded", async () => {
 
-const canvas=
+    const game = new GameManager();
 
-document.getElementById(
+    await game.initialize();
 
-    "gameCanvas"
+    game.start();
 
-);
-
-const engine=
-
-new Engine(
-
-    canvas
-
-).getEngine();
-
-const game=
-
-new Game(
-
-    engine
-
-);
-
-await game.initialize();
-
-game.start();
-
-window.addEventListener(
-
-    "resize",
-
-    ()=>{
-
-        engine.resize();
-
-    }
-
-);
+});
