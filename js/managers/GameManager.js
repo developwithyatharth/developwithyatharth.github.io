@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import WorldGenerator from "../world/WorldGenerator.js";
+import Player from "../player/Player.js";
 
 export default class GameManager {
 
@@ -9,6 +10,9 @@ export default class GameManager {
         this.camera = null;
         this.renderer = null;
         this.clock = new THREE.Clock();
+
+        this.world = null;
+        this.player = null;
 
     }
 
@@ -22,8 +26,9 @@ export default class GameManager {
 
         this.createLights();
 
-        const world = new WorldGenerator(this.scene);
-        world.create();
+        this.createWorld();
+
+        this.createPlayer();
 
         window.addEventListener(
             "resize",
@@ -43,7 +48,7 @@ export default class GameManager {
     createCamera() {
 
         this.camera = new THREE.PerspectiveCamera(
-            60,
+            65,
             window.innerWidth / window.innerHeight,
             0.1,
             1000
@@ -51,14 +56,14 @@ export default class GameManager {
 
         this.camera.position.set(
             0,
-            7,
-            -12
+            5,
+            -8
         );
 
         this.camera.lookAt(
             0,
-            2,
-            15
+            1,
+            8
         );
 
     }
@@ -88,35 +93,53 @@ export default class GameManager {
 
     createLights() {
 
-        const ambient = new THREE.AmbientLight(
+        const ambientLight = new THREE.AmbientLight(
             0xffffff,
             2
         );
 
-        this.scene.add(ambient);
+        this.scene.add(ambientLight);
 
-        const sun = new THREE.DirectionalLight(
+        const sunLight = new THREE.DirectionalLight(
             0xffffff,
             2
         );
 
-        sun.position.set(
+        sunLight.position.set(
             10,
             25,
             -10
         );
 
-        sun.castShadow = true;
+        sunLight.castShadow = true;
 
-        this.scene.add(sun);
+        this.scene.add(sunLight);
+
+    }
+
+    createWorld() {
+
+        this.world = new WorldGenerator(this.scene);
+
+        this.world.create();
+
+    }
+
+    createPlayer() {
+
+        this.player = new Player(this.scene);
+
+        this.player.create();
 
     }
 
     update() {
 
-        const delta = this.clock.getDelta();
+        const deltaTime = this.clock.getDelta();
 
-        // Future game updates will go here.
+        // Future updates will be added here.
+        // Example:
+        // this.player.update(deltaTime);
 
     }
 
