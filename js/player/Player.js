@@ -5,13 +5,15 @@ export default class Player {
     constructor(scene) {
 
         this.scene = scene;
+
         this.mesh = null;
+
+        this.speed = 8;
 
     }
 
     create() {
 
-        // Capsule body
         const geometry = new THREE.CapsuleGeometry(
             0.4,
             1.2,
@@ -34,7 +36,6 @@ export default class Player {
 
         this.mesh.castShadow = true;
 
-        // Position in the center lane
         this.mesh.position.set(
             0,
             1,
@@ -42,6 +43,12 @@ export default class Player {
         );
 
         this.scene.add(this.mesh);
+
+    }
+
+    update(deltaTime) {
+
+        this.mesh.position.z += this.speed * deltaTime;
 
     }
 
