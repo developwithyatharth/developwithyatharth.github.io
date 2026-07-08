@@ -1,5 +1,5 @@
 /* Velocity Runner: Rise of Bharat
-   Working Phase 1 script.js
+   Updated script.js with stable neon lighting
    Requires Three.js loaded before this file.
 */
 
@@ -86,6 +86,7 @@ function startGame() {
   gameRunning = true;
   gamePaused = false;
   gameOver = false;
+
   obstacles = [];
   shardItems = [];
   roadTiles = [];
@@ -109,7 +110,7 @@ function initThree() {
 
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x02030a);
-  scene.fog = new THREE.FogExp2(0x05081a, 0.035);
+  scene.fog = new THREE.FogExp2(0x05081a, 0.025);
 
   camera = new THREE.PerspectiveCamera(
     70,
@@ -130,21 +131,31 @@ function initThree() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.shadowMap.enabled = true;
 
-  const ambient = new THREE.AmbientLight(0x8fdcff, 0.7);
+  /* Strong base city light */
+  const ambient = new THREE.AmbientLight(0x8fdcff, 1.25);
   scene.add(ambient);
+
+  /* Bharat cyber glow: blue sky + golden ground feeling */
+  const bharatGlow = new THREE.HemisphereLight(0x00eaff, 0xffaa00, 1.4);
+  scene.add(bharatGlow);
 
   const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
   mainLight.position.set(5, 12, 8);
   mainLight.castShadow = true;
   scene.add(mainLight);
 
-  const neonLight1 = new THREE.PointLight(0x00eaff, 2, 25);
-  neonLight1.position.set(-5, 4, 0);
+  /* Fixed neon lights for the main scene */
+  const neonLight1 = new THREE.PointLight(0x00eaff, 3, 40);
+  neonLight1.position.set(-5, 5, -5);
   scene.add(neonLight1);
 
-  const neonLight2 = new THREE.PointLight(0xff2aff, 2, 25);
-  neonLight2.position.set(5, 4, -15);
+  const neonLight2 = new THREE.PointLight(0xff2aff, 3, 40);
+  neonLight2.position.set(5, 5, -18);
   scene.add(neonLight2);
+
+  const goldenLight = new THREE.PointLight(0xffd166, 2.5, 35);
+  goldenLight.position.set(0, 6, -30);
+  scene.add(goldenLight);
 
   roadGroup = new THREE.Group();
   obstacleGroup = new THREE.Group();
@@ -174,13 +185,11 @@ function createPlayer() {
     metalness: 0.4,
     roughness: 0.25,
     emissive: 0x002244,
-    emissiveIntensity: 0.5
+    emissiveIntensity: 0.8
   });
 
-  const glowMat = new THREE.MeshStandardMaterial({
-    color: 0x00f5ff,
-    emissive: 0x00f5ff,
-    emissiveIntensity: 1.5
+  const glowMat = new THREE.MeshBasicMaterial({
+    color: 0x00f5ff
   });
 
   player = new THREE.Group();
@@ -198,6 +207,10 @@ function createPlayer() {
   const visor = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.08, 0.05), glowMat);
   visor.position.set(0, 2.38, 0.31);
   player.add(visor);
+
+  const chestGlow = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.9, 0.05), glowMat);
+  chestGlow.position.set(0, 1.45, 0.26);
+  player.add(chestGlow);
 
   const leftLeg = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.8, 0.22), bodyMat);
   leftLeg.position.set(-0.22, 0.45, 0);
@@ -217,17 +230,23 @@ function createPlayer() {
 
   suryaCore = new THREE.Mesh(
     new THREE.SphereGeometry(0.28, 32, 32),
-    new THREE.MeshStandardMaterial({
-      color: 0xffd166,
-      emissive: 0xffaa00,
-      emissiveIntensity: 2.5,
-      metalness: 0.2,
-      roughness: 0.1
+    new THREE.MeshBasicMaterial({
+      color: 0xffd166
     })
   );
 
   suryaCore.position.set(0, 1.55, 0.38);
   player.add(suryaCore);
+
+  /* Permanent Surya Core light following the player */
+  const coreLight = new THREE.PointLight(0xffd166, 3.5, 12);
+  coreLight.position.set(0, 1.55, 0.6);
+  player.add(coreLight);
+
+  /* Blue cyber suit glow following the player */
+  const suitLight = new THREE.PointLight(0x00f5ff, 2.2, 8);
+  suitLight.position.set(0, 1.4, 0.2);
+  player.add(suitLight);
 
   player.position.set(lanes[currentLane], 0, 0);
   scene.add(player);
@@ -241,7 +260,7 @@ function createDrone() {
     metalness: 0.8,
     roughness: 0.2,
     emissive: 0xff0033,
-    emissiveIntensity: 1
+    emissiveIntensity: 1.5
   });
 
   const body = new THREE.Mesh(new THREE.OctahedronGeometry(0.65), droneMat);
@@ -250,14 +269,17 @@ function createDrone() {
 
   const eye = new THREE.Mesh(
     new THREE.SphereGeometry(0.18, 24, 24),
-    new THREE.MeshStandardMaterial({
-      color: 0xff0033,
-      emissive: 0xff0033,
-      emissiveIntensity: 3
+    new THREE.MeshBasicMaterial({
+      color: 0xff0033
     })
   );
+
   eye.position.set(0, 0, 0.55);
   drone.add(eye);
+
+  const droneLight = new THREE.PointLight(0xff0033, 2.8, 10);
+  droneLight.position.set(0, 0, 0.5);
+  drone.add(droneLight);
 
   drone.position.set(0, 3.2, 5);
   scene.add(drone);
@@ -267,13 +289,18 @@ function createRoad() {
   const roadMat = new THREE.MeshStandardMaterial({
     color: 0x080d1f,
     metalness: 0.3,
-    roughness: 0.4
+    roughness: 0.4,
+    emissive: 0x010b22,
+    emissiveIntensity: 0.5
   });
 
-  const laneMat = new THREE.MeshStandardMaterial({
-    color: 0x00f5ff,
-    emissive: 0x00cfff,
-    emissiveIntensity: 1.5
+  /* MeshBasicMaterial keeps neon visible even without lights */
+  const laneMat = new THREE.MeshBasicMaterial({
+    color: 0x00f5ff
+  });
+
+  const goldenMat = new THREE.MeshBasicMaterial({
+    color: 0xffd166
   });
 
   for (let i = 0; i < 22; i++) {
@@ -294,6 +321,14 @@ function createRoad() {
     centerGlow.position.set(0, 0.2, -i * 8);
     tile.add(centerGlow);
 
+    const leftEdge = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.08, 7), goldenMat);
+    leftEdge.position.set(-5.05, 0.24, -i * 8);
+    tile.add(leftEdge);
+
+    const rightEdge = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.08, 7), goldenMat);
+    rightEdge.position.set(5.05, 0.24, -i * 8);
+    tile.add(rightEdge);
+
     roadTiles.push(tile);
     roadGroup.add(tile);
   }
@@ -306,21 +341,23 @@ function createCity() {
       metalness: 0.5,
       roughness: 0.3,
       emissive: 0x001144,
-      emissiveIntensity: 0.4
+      emissiveIntensity: 0.8
     }),
     new THREE.MeshStandardMaterial({
       color: 0x160b2e,
       metalness: 0.5,
       roughness: 0.25,
       emissive: 0x230044,
-      emissiveIntensity: 0.5
+      emissiveIntensity: 0.8
     })
   ];
 
-  const windowMat = new THREE.MeshStandardMaterial({
-    color: 0x00eaff,
-    emissive: 0x00eaff,
-    emissiveIntensity: 1.8
+  const windowMat = new THREE.MeshBasicMaterial({
+    color: 0x00eaff
+  });
+
+  const goldWindowMat = new THREE.MeshBasicMaterial({
+    color: 0xffd166
   });
 
   for (let i = 0; i < 55; i++) {
@@ -341,10 +378,28 @@ function createCity() {
     building.add(tower);
 
     for (let j = 0; j < 4; j++) {
-      const win = new THREE.Mesh(new THREE.BoxGeometry(width * 0.75, 0.06, 0.03), windowMat);
-      win.position.set(tower.position.x, 1 + j * 1.4, tower.position.z + depth / 2 + 0.02);
+      const win = new THREE.Mesh(
+        new THREE.BoxGeometry(width * 0.75, 0.06, 0.035),
+        j % 2 === 0 ? windowMat : goldWindowMat
+      );
+
+      win.position.set(
+        tower.position.x,
+        1 + j * 1.4,
+        tower.position.z + depth / 2 + 0.03
+      );
+
       building.add(win);
     }
+
+    /* Bharat-inspired glowing top ring */
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(width * 0.35, 0.025, 10, 28),
+      goldWindowMat
+    );
+    ring.position.set(tower.position.x, height + 0.3, tower.position.z);
+    ring.rotation.x = Math.PI / 2;
+    building.add(ring);
 
     buildings.push(building);
     cityGroup.add(building);
@@ -371,16 +426,20 @@ function createRain() {
 }
 
 function createSkySymbols() {
-  const symbolMat = new THREE.MeshStandardMaterial({
-    color: 0xffd166,
-    emissive: 0xffaa00,
-    emissiveIntensity: 1.7,
-    metalness: 0.2,
-    roughness: 0.2
+  const symbolMat = new THREE.MeshBasicMaterial({
+    color: 0xffd166
   });
 
-  for (let i = 0; i < 10; i++) {
-    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.8, 0.035, 12, 48), symbolMat);
+  const cyanMat = new THREE.MeshBasicMaterial({
+    color: 0x00f5ff
+  });
+
+  for (let i = 0; i < 12; i++) {
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(0.8, 0.035, 12, 48),
+      i % 2 === 0 ? symbolMat : cyanMat
+    );
+
     ring.position.set((Math.random() - 0.5) * 20, 5 + Math.random() * 7, -15 - i * 15);
     ring.rotation.x = Math.PI / 2;
     cityGroup.add(ring);
@@ -399,7 +458,7 @@ function spawnObstacle() {
       new THREE.MeshStandardMaterial({
         color: 0xff0033,
         emissive: 0xff0033,
-        emissiveIntensity: 1.5
+        emissiveIntensity: 2
       })
     );
     obstacle.userData.type = "block";
@@ -407,10 +466,8 @@ function spawnObstacle() {
   } else if (type < 0.75) {
     obstacle = new THREE.Mesh(
       new THREE.BoxGeometry(1.6, 0.55, 1),
-      new THREE.MeshStandardMaterial({
-        color: 0xffd166,
-        emissive: 0xffaa00,
-        emissiveIntensity: 1.5
+      new THREE.MeshBasicMaterial({
+        color: 0xffd166
       })
     );
     obstacle.userData.type = "low";
@@ -418,10 +475,8 @@ function spawnObstacle() {
   } else {
     obstacle = new THREE.Mesh(
       new THREE.BoxGeometry(2.2, 0.28, 1),
-      new THREE.MeshStandardMaterial({
-        color: 0xb14cff,
-        emissive: 0x8a2cff,
-        emissiveIntensity: 1.8
+      new THREE.MeshBasicMaterial({
+        color: 0xb14cff
       })
     );
     obstacle.userData.type = "slide";
@@ -441,14 +496,13 @@ function spawnShard() {
 
   const shard = new THREE.Mesh(
     new THREE.OctahedronGeometry(0.28),
-    new THREE.MeshStandardMaterial({
-      color: 0xffd166,
-      emissive: 0xffaa00,
-      emissiveIntensity: 2.5,
-      metalness: 0.4,
-      roughness: 0.15
+    new THREE.MeshBasicMaterial({
+      color: 0xffd166
     })
   );
+
+  const shardLight = new THREE.PointLight(0xffd166, 1.5, 4);
+  shard.add(shardLight);
 
   shard.position.set(lanes[lane], 1.15 + Math.random() * 1.1, -95);
   shard.userData.collected = false;
@@ -489,17 +543,10 @@ function dash() {
 
   speed += 0.18;
   abilityText.textContent = "Surya Dash Activated";
+
   setTimeout(() => {
-    abilityText.textContent = "Surya Dash Ready";
+    if (abilityText) abilityText.textContent = "Surya Dash Ready";
   }, 900);
-}
-
-function checkCollision(a, b, sizeA = 1, sizeB = 1) {
-  const dx = Math.abs(a.position.x - b.position.x);
-  const dy = Math.abs((a.position.y + playerY) - b.position.y);
-  const dz = Math.abs(a.position.z - b.position.z);
-
-  return dx < sizeA && dy < 1.25 && dz < sizeB;
 }
 
 function updateGame() {
@@ -528,6 +575,7 @@ function updateGame() {
 
   if (isSliding) {
     slideTimer--;
+
     if (slideTimer <= 0) {
       isSliding = false;
       player.scale.y = 1;
@@ -716,9 +764,11 @@ document.addEventListener("touchstart", function (e) {
   touchStartY = t.clientY;
 
   const now = Date.now();
+
   if (now - lastTap < 300) {
     dash();
   }
+
   lastTap = now;
 });
 
