@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Velocity Runner: Rise of Bharat</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- HOME SCREEN -->
+  <section id="homeScreen" class="screen active">
+    <div class="hero-card">
+      <p class="eyebrow">Neo Aryavarta 2149</p>
+
+      <h1>
+        Velocity Runner:<br />
+        <span>Rise of Bharat</span>
+      </h1>
+
+      <h2>When the world falls, Bharat still runs.</h2>
+
+      <p class="story">
+        Play as <b>Aarav Astra</b>, the last runner carrying the glowing
+        <b>Surya Core</b> through an AI-controlled cyber city ruled by
+        <b>Trinetra</b>.
+      </p>
+
+      <div class="start-box">
+        <input
+          type="text"
+          id="runnerNameInput"
+          placeholder="Enter runner name"
+          maxlength="18"
+        />
+
+        <button id="startBtn" type="button">
+          Start Run
+        </button>
+      </div>
+
+      <div class="controls-info">
+        <p><b>PC:</b> ← → move | Space jump | ↓ slide | Shift dash</p>
+        <p><b>Mobile:</b> Swipe left/right/up/down | Double tap dash</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME UI -->
+  <section id="gameScreen" class="screen">
+    <canvas id="gameCanvas"></canvas>
+
+    <div class="hud">
+      <div>Runner: <b id="runnerName">Aarav Astra</b></div>
+      <div>Distance: <b id="distance">0</b> m</div>
+      <div>Surya Shards: <b id="shards">0</b></div>
+      <div>High Score: <b id="highScore">0</b> m</div>
+    </div>
+
+    <div id="abilityText" class="ability">
+      Surya Dash Ready
+    </div>
+
+    <div id="missionText" class="mission">
+      Protect the Surya Core
+    </div>
+
+    <button id="pauseBtn" type="button" class="pause-btn">
+      Pause
+    </button>
+  </section>
+
+  <!-- GAME OVER SCREEN -->
+  <section id="gameOverScreen" class="screen">
+    <div class="game-over-card">
+      <p class="eyebrow">Quantum Link Broken</p>
+
+      <h1>Run Ended</h1>
+
+      <p>Distance: <b id="finalDistance">0</b> m</p>
+      <p>Surya Shards: <b id="finalShards">0</b></p>
+
+      <div class="game-over-buttons">
+        <button id="restartBtn" type="button">Run Again</button>
+        <button id="homeBtn" type="button">Home</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE.JS LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GAME SCRIPT -->
+  <script src="script.js"></script>
+
+  <!-- BUTTON SAFETY FIX -->
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      const startBtn = document.getElementById("startBtn");
+
+      if (startBtn) {
+        startBtn.addEventListener("click", function () {
+          if (typeof startGame === "function") {
+            startGame();
+          } else {
+            alert("script.js is not connected properly. Please check that script.js is uploaded in the same folder as index.html.");
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
