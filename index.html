@@ -13,7 +13,11 @@
 
   <!-- HOME SCREEN -->
   <section id="homeScreen" class="screen active">
+    <div class="home-bg-glow"></div>
+
     <div class="hero-card">
+      <div class="logo-orb"></div>
+
       <p class="eyebrow">Neo Aryavarta 2149</p>
 
       <h1>
@@ -37,19 +41,26 @@
           maxlength="18"
         />
 
-        <button id="startBtn" type="button">
+        <button id="startBtn" type="button" onclick="startGame()">
           Start Run
         </button>
       </div>
 
       <div class="controls-info">
-        <p><b>PC:</b> ← → move | Space jump | ↓ slide | Shift dash</p>
-        <p><b>Mobile:</b> Swipe left/right/up/down | Double tap dash</p>
+        <p><b>PC:</b> ← → move | Space jump | ↓ slide | Shift dash | F shoot</p>
+        <p><b>Mobile:</b> Swipe left/right/up/down | Double tap dash | Shoot button</p>
+      </div>
+
+      <div class="feature-row">
+        <span>3 Lanes</span>
+        <span>Dash</span>
+        <span>Shoot</span>
+        <span>Drone Chase</span>
       </div>
     </div>
   </section>
 
-  <!-- GAME UI -->
+  <!-- GAME SCREEN -->
   <section id="gameScreen" class="screen">
     <canvas id="gameCanvas"></canvas>
 
@@ -67,6 +78,10 @@
     <div id="missionText" class="mission">
       Protect the Surya Core
     </div>
+
+    <button id="shootBtn" type="button" class="shoot-btn">
+      Shoot
+    </button>
 
     <button id="pauseBtn" type="button" class="pause-btn">
       Pause
@@ -94,19 +109,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- GAME SCRIPT -->
-  <script src="script.js"></script>
+  <script src="script.js?v=shoot2"></script>
 
-  <!-- BUTTON SAFETY FIX -->
+  <!-- SAFETY CHECK -->
   <script>
     window.addEventListener("DOMContentLoaded", function () {
       const startBtn = document.getElementById("startBtn");
 
       if (startBtn) {
         startBtn.addEventListener("click", function () {
-          if (typeof startGame === "function") {
-            startGame();
-          } else {
-            alert("script.js is not connected properly. Please check that script.js is uploaded in the same folder as index.html.");
+          if (typeof startGame !== "function") {
+            alert("script.js is not loading correctly. Please check file name and location.");
           }
         });
       }
