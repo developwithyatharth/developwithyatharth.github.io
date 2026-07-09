@@ -1531,3 +1531,10 @@ if (homeBtn) {
 if (shootBtn) {
   shootBtn.addEventListener("click", shoot);
 }
+const startBtn = document.getElementById("startBtn");
+
+if (startBtn) {
+  startBtn.addEventListener("click", startGame);
+}
+
+window.startGame = startGame;
