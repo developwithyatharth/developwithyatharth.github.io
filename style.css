@@ -671,3 +671,7 @@ button:active {
     height: 10px;
   }
 }
+#shieldStatus {
+  color: #00f5ff;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.7);
+}
