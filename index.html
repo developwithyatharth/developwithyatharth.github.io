@@ -118,20 +118,5 @@
   <!-- GAME SCRIPT -->
   <script src="script.js?v=shoot2"></script>
 
-  <!-- SAFETY CHECK -->
-  <script>
-    window.addEventListener("DOMContentLoaded", function () {
-      const startBtn = document.getElementById("startBtn");
-
-      if (startBtn) {
-        startBtn.addEventListener("click", function () {
-          if (typeof startGame !== "function") {
-            alert("script.js is not loading correctly. Please check file name and location.");
-          }
-        });
-      }
-    });
-  </script>
-
 </body>
 </html>
