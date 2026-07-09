@@ -607,3 +607,67 @@ button:active {
   color: #ff3355;
   text-shadow: 0 0 12px rgba(255, 0, 51, 0.75);
 }
+.boss-ui {
+  position: fixed;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  width: min(420px, calc(100% - 32px));
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(18, 3, 18, 0.78);
+  border: 1px solid rgba(255, 42, 255, 0.45);
+  box-shadow:
+    0 0 24px rgba(255, 42, 255, 0.22),
+    inset 0 0 18px rgba(255, 42, 255, 0.08);
+  backdrop-filter: blur(14px);
+  display: none;
+}
+
+.boss-ui.active {
+  display: block;
+}
+
+.boss-title {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #ffe8ff;
+  margin-bottom: 8px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.boss-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+#bossHealthFill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff0033, #ff2aff, #ffd166);
+  box-shadow: 0 0 16px rgba(255, 42, 255, 0.45);
+  transition: width 0.2s ease;
+}
+
+@media (max-width: 700px) {
+  .boss-ui {
+    top: 92px;
+    width: calc(100% - 24px);
+    padding: 10px 12px;
+  }
+
+  .boss-title {
+    font-size: 12px;
+  }
+
+  .boss-bar {
+    height: 10px;
+  }
+}
